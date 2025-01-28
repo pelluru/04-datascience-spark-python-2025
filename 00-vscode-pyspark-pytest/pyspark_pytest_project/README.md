@@ -22,3 +22,12 @@ This is a simple project template that uses PySpark with pytest for unit testing
 
 Run the main application with:
 \`python -m app.main\`.
+
+# set asolute path 
+export PYTHONPATH=$(pwd)
+python -c "import app; print(app)"
+
+# set python version same 
+export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/bin/python
+export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/bin/python
+
