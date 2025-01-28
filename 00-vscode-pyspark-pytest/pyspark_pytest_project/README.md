@@ -29,5 +29,5 @@ python -c "import app; print(app)"
 
 # set python version same 
 export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/bin/python
-export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/bin/python
+export PYSPARK_PYTHON=/opt/anaconda3/bin/python
 
