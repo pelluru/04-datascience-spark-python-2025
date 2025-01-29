@@ -1,5 +1,5 @@
-from pyspark.sql import DataFrame
-from pyspark.sql.functions import udf,col
+from pyspark.sql import DataFrame , SparkSession
+from pyspark.sql.functions import udf,col,sha2
 from pyspark.sql.types import StringType
 
 def read_contents_of_the_file(file_path: str):
@@ -19,10 +19,25 @@ def add_column_with_sha2(source_dataFrame, sha2_bits=256):
             "file_content", read_file_content_udf("file_path")
         )
         source_dataFrame_with_sha2 = source_dataFrame_with_file_content.withColumn(
-            "file_checksum", col("file_content")
+            "file_checksum", sha2(col("file_content"),sha2_bits)
         ).drop("file_content")
         return source_dataFrame_with_sha2
     except Exception as e:
         error_message = f"Error computing SHA2 for the  file,{e}"
         print(error_message)
         return None
+    
+    
+
+if __name__ == '__main__':
+
+    spark = SparkSession.builder.appName("test sha2").getOrCreate()
+
+    data = [("Alice", 25,"/Users/prabhakarapelluru/Downloads/Lato-Regular.bin"), ("Bob", 30,"/Users/prabhakarapelluru/Downloads/Lato-Regular.bin"), ("Charlie", 35,"/Users/prabhakarapelluru/Downloads/Lato-Regular.bin")]
+    columns = ["name", "age","file_path"]
+
+    df = spark.createDataFrame(data, columns)
+
+    df_sha = add_column_with_sha2(df)
+
+    df_sha.show(truncate=False)
