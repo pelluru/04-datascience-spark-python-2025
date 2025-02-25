@@ -1,0 +1,7 @@
+userid,date,label,amount,currency
+1,01-jan-17,9.15,50,GBP
+2,02-jan-17,9.25,70,USD
+3,03-jan-17,9.29,80,INR
+4,04-jan-18,9.3,90,GBP
+5,01-jan-17,9.35,50,INR
+6,06-jan-17,9.43,75,INR
