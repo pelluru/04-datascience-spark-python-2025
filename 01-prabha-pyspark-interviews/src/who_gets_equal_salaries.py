@@ -1,17 +1,16 @@
-#Query to get who are getting equal salary
+# Query to get who are getting equal salary
 
 # Use conda create -n "environment name"
 # activate : conda activate "environment name"
-# install pip: conda install pip 
-# select created virtual env: 
+# install pip: conda install pip
+# select created virtual env:
 # open the Command Palette (Ctrl+Shift+P), search for the Python: Create Environment command, and select it.
 # install all packages : pip install -r requirements.txt
 # export PYSPARK_PYTHON=/opt/anaconda3/envs/pyspark-projects/bin/python3.13
 # export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/envs/pyspark-projects/bin/python3.13
 
 
-
-from pyspark import SparkConf,SparkContext
+from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
@@ -22,24 +21,44 @@ sc = SparkContext(conf=conf)
 sc.setLogLevel("ERROR")
 spark = SparkSession.builder.getOrCreate()
 
-data = [("001", "Monika", "Arora", 100000, "2014-02-20 09:00:00", "HR"),
-        ("002", "Niharika", "Verma", 300000, "2014-06-11 09:00:00", "Admin"),
-        ("003", "Vishal", "Singhal", 300000, "2014-02-20 09:00:00", "HR"),
-        ("004", "Amitabh", "Singh", 500000, "2014-02-20 09:00:00", "Admin"),
-        ("005", "Vivek", "Bhati", 500000, "2014-06-11 09:00:00", "Admin")]
+data = [
+    ("001", "Monika", "Arora", 100000, "2014-02-20 09:00:00", "HR"),
+    ("002", "Niharika", "Verma", 300000, "2014-06-11 09:00:00", "Admin"),
+    ("003", "Vishal", "Singhal", 300000, "2014-02-20 09:00:00", "HR"),
+    ("004", "Amitabh", "Singh", 500000, "2014-02-20 09:00:00", "Admin"),
+    ("005", "Vivek", "Bhati", 500000, "2014-06-11 09:00:00", "Admin"),
+]
 
 
-myschema = ["workerid","firstname","lastname","salary","joiningdate","depart"]
+myschema = ["workerid", "firstname", "lastname", "salary", "joiningdate", "depart"]
 
 
-df = spark.createDataFrame(data,schema=myschema)
+df = spark.createDataFrame(data, schema=myschema)
 
 df.show()
 
 # Through SparkSQL
 df.createOrReplaceTempView("worktab")
 
-spark.sql("select a.workerid,a.firstname,a.lastname,a.salary,a.joiningdate,a.depart from worktab a, worktab b where a.salary=b.salary and a.workerid !=b.workerid").show()
+spark.sql(
+    "select a.workerid,a.firstname,a.lastname,a.salary,a.joiningdate,a.depart from worktab a, worktab b where a.salary=b.salary and a.workerid !=b.workerid"
+).show()
 
 # Through Spark DSL
-finaldf = df.alias("a").join(df.alias("b"), (col("a.salary") == col("b.salary")) & (col("a.workerid") != col("b.workerid")), "inner").select(col("a.workerid"), col("a.firstname"), col("a.lastname"), col("a.salary"), col("a.joiningdate"), col("a.depart")).show()
+finaldf = (
+    df.alias("a")
+    .join(
+        df.alias("b"),
+        (col("a.salary") == col("b.salary")) & (col("a.workerid") != col("b.workerid")),
+        "inner",
+    )
+    .select(
+        col("a.workerid"),
+        col("a.firstname"),
+        col("a.lastname"),
+        col("a.salary"),
+        col("a.joiningdate"),
+        col("a.depart"),
+    )
+    .show()
+)
