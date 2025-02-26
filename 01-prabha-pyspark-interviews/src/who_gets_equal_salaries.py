@@ -1,10 +1,14 @@
 #Query to get who are getting equal salary
+
 # Use conda create -n "environment name"
 # activate : conda activate "environment name"
 # install pip: conda install pip 
 # select created virtual env: 
 # open the Command Palette (Ctrl+Shift+P), search for the Python: Create Environment command, and select it.
 # install all packages : pip install -r requirements.txt
+# export PYSPARK_PYTHON=/opt/anaconda3/envs/pyspark-projects/bin/python3.13
+# export PYSPARK_DRIVER_PYTHON=/opt/anaconda3/envs/pyspark-projects/bin/python3.13
+
 
 
 from pyspark import SparkConf,SparkContext
