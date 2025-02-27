@@ -1,3 +1,5 @@
+# Original source : https://github.com/cnkyrpsgl/leetcode?tab=readme-ov-file
+
 # To solve the problem of finding two indices in an array whose corresponding values sum up to a given target, we can utilize a hash map (dictionary) for an efficient solution. This approach leverages the hash map to store and quickly lookup the complement of each number as we iterate through the array.
 
 # Approach:
