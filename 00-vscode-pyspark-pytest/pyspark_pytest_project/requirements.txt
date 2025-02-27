@@ -1,3 +1,0 @@
-pyspark
-pytest
-python == 3.9
