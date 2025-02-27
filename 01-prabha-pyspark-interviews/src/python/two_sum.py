@@ -20,6 +20,7 @@
 
 # Python Function:
 
+
 def two_sum(nums, target):
     # Initialize an empty dictionary to store number and its index
     num_to_index = {}
@@ -41,15 +42,15 @@ def two_sum(nums, target):
     return []
 
 
-	# •	Initialization: We start by creating an empty dictionary num_to_index to store numbers and their corresponding indices as we iterate through the list.
-	# •	Iteration: For each number in the list:
-	# •	Compute its complement by subtracting the number from the target.
-	# •	Check if this complement is already a key in the dictionary:
-	# •	If it is, this means we’ve previously encountered the complement, and together with the current number, they sum up to the target. We then return the index of the complement (retrieved from the dictionary) and the current index.
-	# •	If it’s not, we add the current number and its index to the dictionary for future reference.
-	# •	Assumptions Handling: The problem guarantees exactly one solution, so we don’t need to handle cases with no solutions or multiple solutions.
+# •	Initialization: We start by creating an empty dictionary num_to_index to store numbers and their corresponding indices as we iterate through the list.
+# •	Iteration: For each number in the list:
+# •	Compute its complement by subtracting the number from the target.
+# •	Check if this complement is already a key in the dictionary:
+# •	If it is, this means we’ve previously encountered the complement, and together with the current number, they sum up to the target. We then return the index of the complement (retrieved from the dictionary) and the current index.
+# •	If it’s not, we add the current number and its index to the dictionary for future reference.
+# •	Assumptions Handling: The problem guarantees exactly one solution, so we don’t need to handle cases with no solutions or multiple solutions.
 
-    # Example 1
+# Example 1
 nums1 = [2, 7, 11, 15]
 target1 = 9
 print(two_sum(nums1, target1))  # Output: [0, 1]
