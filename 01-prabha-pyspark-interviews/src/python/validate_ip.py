@@ -1,6 +1,7 @@
 ipaddress = "1.23.53.1"
 
 
+
 def check_ip_validation(ipaddress):
     # Correct syntax for splitting an IP address
     four_digits = ipaddress.split(".")
@@ -20,6 +21,6 @@ def check_ip_validation(ipaddress):
     return True  # If all checks pass, return True
 
 
-valid_ip = check_ip_validation(ipaddress)
+valid_ip: bool = check_ip_validation(ipaddress)
 
 print(valid_ip)
