@@ -1,5 +1,7 @@
 https://github.com/cnkyrpsgl/leetcode?tab=readme-ov-file
 
-Sliding Window programing  pattern
+Sliding Window programing  pattern examples
+============================================
 
 https://claude.ai/chat/cd216634-dc3f-4a95-aa5e-ab13114913e8
+https://claude.ai/share/15a20f3b-11e8-4a5c-ab68-d6891fdbc565
