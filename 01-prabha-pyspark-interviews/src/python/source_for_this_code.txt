@@ -1,1 +1,5 @@
 https://github.com/cnkyrpsgl/leetcode?tab=readme-ov-file
+
+Sliding Window programing  pattern
+
+https://claude.ai/chat/cd216634-dc3f-4a95-aa5e-ab13114913e8
